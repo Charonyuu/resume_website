@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './index.module.scss'
 
 
-export default function HomePage() {
+export default function AboutPage() {
   return (
     <div className={styles.right_section}>
       <div>

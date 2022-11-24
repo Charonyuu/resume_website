@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function Notepage() {
+export default function NotePage() {
   return (
     <div>
       213123

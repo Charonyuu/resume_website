@@ -18,7 +18,7 @@ export default function Desktop_Nav({page,setPage}) {
         }
     }
   return (
-    <section className={styles.left_section}>
+    <section className={styles.nav_section}>
         <div className={styles.btn} onClick={changeLanguage}><IoLanguage /></div>
       <ul>
         <Link to="/">
@@ -26,14 +26,13 @@ export default function Desktop_Nav({page,setPage}) {
                 <AiFillHome /><p>{t("home")}</p>
             </li>
         </Link>
-        <Link to="/">
-        <li onClick={()=>setPage('about')} className={page === 'about' ? styles.active : null}><BsPersonFill/><p>{t("about")}</p></li>
-
+        <Link to="/about">
+            <li onClick={()=>setPage('about')} className={page === 'about' ? styles.active : null}><BsPersonFill/><p>{t("about")}</p></li>
         </Link>
-        <Link to="/">
+        <Link to="/experience">
             <li onClick={()=>setPage('experience')} className={page === 'experience' ? styles.active : null}><BsFillPersonBadgeFill /><p>{t("experience")}</p></li>
         </Link>
-        <Link to="/">
+        <Link to="/portfolio">
             <li onClick={()=>setPage('portfolio')} className={page === 'portfolio' ? styles.active : null}><BsFillBookFill /><p>{t("portfolio")}</p></li>
         </Link>
         <Link to="/note">
