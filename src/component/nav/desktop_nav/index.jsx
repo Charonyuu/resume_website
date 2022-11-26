@@ -1,15 +1,16 @@
 import React from 'react'
-import {
-  Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from './index.module.scss'
 import { useTranslation } from "react-i18next";
 import { IoLanguage } from "react-icons/io5";
 import { BsPersonFill,BsFillPersonBadgeFill,BsPencilFill,BsFillBookFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
-
-export default function Desktop_Nav({page,setPage}) {
+import Logo from'../../../assets/logo.png';
+import { useLocation } from "react-router-dom";
+export default function Desktop_Nav() {
     const { t,i18n } = useTranslation();
+    const location = useLocation();
+
     const changeLanguage = () =>{
         if (i18n.language === 'en') {
             i18n.changeLanguage('zh')
@@ -20,24 +21,25 @@ export default function Desktop_Nav({page,setPage}) {
   return (
     <section className={styles.nav_section}>
         <div className={styles.btn} onClick={changeLanguage}><IoLanguage /></div>
+        <div className={styles.logo}><img src={Logo} alt=''/></div>
       <ul>
         <Link to="/">
-            <li onClick={()=>setPage('home')} className={page === 'home' ? styles.active : null}>
-                <AiFillHome /><p>{t("home")}</p>
+            <li className={location.pathname === '/' ? styles.active : null}>
+                <AiFillHome /><p>{t("nav.home")}</p>
             </li>
         </Link>
         <Link to="/about">
-            <li onClick={()=>setPage('about')} className={page === 'about' ? styles.active : null}><BsPersonFill/><p>{t("about")}</p></li>
+            <li className={location.pathname  === '/about' ? styles.active : null}><BsPersonFill/><p>{t("nav.about")}</p></li>
         </Link>
         <Link to="/experience">
-            <li onClick={()=>setPage('experience')} className={page === 'experience' ? styles.active : null}><BsFillPersonBadgeFill /><p>{t("experience")}</p></li>
+            <li className={location.pathname  === '/experience' ? styles.active : null}><BsFillPersonBadgeFill /><p>{t("nav.experience")}</p></li>
         </Link>
         <Link to="/portfolio">
-            <li onClick={()=>setPage('portfolio')} className={page === 'portfolio' ? styles.active : null}><BsFillBookFill /><p>{t("portfolio")}</p></li>
+            <li className={location.pathname  === '/portfolio' ? styles.active : null}><BsFillBookFill /><p>{t("nav.portfolio")}</p></li>
         </Link>
         <Link to="/note">
-            <li onClick={()=>setPage('note')} className={page === 'note' ? styles.active : null}>
-                <BsPencilFill /><p>{t("note")}</p>
+            <li className={location.pathname  === '/note' ? styles.active : null}>
+                <BsPencilFill /><p>{t("nav.note")}</p>
             </li>
         </Link>
       </ul>

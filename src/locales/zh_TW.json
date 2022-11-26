@@ -1,7 +1,19 @@
-{
-  "home": "首頁",
-  "about": "關於",
-  "experience": "經歷",
-  "portfolio": "作品",
-  "note": "筆記"
+{ 
+  "nav":{
+    "home": "首頁",
+    "about": "關於",
+    "experience": "經歷",
+    "portfolio": "作品",
+    "note": "筆記"
+  },
+  "homepage":{
+    "intoduce_name":"您好～我是",
+    "intoduce_title":"我是一個",
+    "more_about_me":"更多關於我"
+  },
+  "about":{
+    "skill": "技能",
+    "target": ""
+  }
+  
 }

@@ -12,12 +12,12 @@ function App() {
   return (
     <section className="all">
       <div className="left_section">
-        <Nav/>
+        <Nav />
       </div>
       <div className="right_section">
         <Switch>
           <Route exact path="/">
-            <HomePage/>
+            <HomePage />
           </Route>
           <Route path="/about">
             <AboutPage/>

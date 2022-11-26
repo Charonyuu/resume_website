@@ -1,0 +1,95 @@
+@import "../styles/pattern.scss";
+
+.HomePage{
+    background-color: rgba(235, 235, 235,0.5);
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-wrap: wrap-reverse;
+    & .introduce{
+        padding-left: 40px;
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        & .name{
+            font-size: 24px;
+            margin-bottom: 5px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        & .title{
+            font-size: 20px;
+            margin-bottom: 5px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        & .introduction{
+            font-size: 18px;
+            margin-bottom: 5px;
+            animation: fadeIn 1s ease-in-out;
+
+        }
+        & .button{
+            margin: 20px 0;
+            background: #f46b45; /* fallback for old browsers */
+            background: $chrome-linear-color; /* Chrome 10-25, Safari 5.1-6 */
+            background: $linear-color;
+            color: white;
+            height: 40px;
+            width: 200px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+            transition: letter-spacing 0.3s ease-in-out;
+
+            &:hover{
+                // transform: translateY(-5px);
+                letter-spacing: 3px;
+            }
+        }
+    }
+    & .picture_container{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 50px;
+        & .picture{
+            height: 400px;
+            width: 300px;
+            animation: pictureFadeIn 1s ease-in-out;
+            & img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 10px;
+
+            }
+        }
+        
+    }
+}
+@keyframes fadeIn {
+    from{
+        transform: translateX(-20px) ;
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px) ;
+        opacity: 1;
+    }
+}
+@keyframes pictureFadeIn {
+    from{
+        transform: translateX(20px) ;
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px) ;
+        opacity: 1;
+    }
+}

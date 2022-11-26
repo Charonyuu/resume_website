@@ -1,5 +1,67 @@
-.right_section{
-    position: relative;
-    width: 70%;
-    height: 100vh;
+@import "../styles/pattern.scss";
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+.aboutPage{
+    background-color: rgba(235, 235, 235,0.5);
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    & h1{
+        font-family: 'Carter One', cursive;
+        font-size: 30px;
+        background: #f46b45; /* fallback for old browsers */
+        background: $chrome-linear-color; /* Chrome 10-25, Safari 5.1-6 */
+        background: $linear-color;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    & .skill_container{
+        width: 100%;
+        padding: 0 10px;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        & .skill_card{
+        width: 300px;
+        margin: 10px;
+        background-color: white;
+        border-radius: 10px;
+        border-top: 3px solid orange;
+        box-shadow: 0px 30px 40px -20px rgba(193, 190, 190, 0.4);
+        padding: 0 10px;
+        & .title{
+            text-align: center;
+            font-size: 24px;
+            width: 100%;
+            padding-bottom: 10px;
+            border-bottom: 1px solid lightgray;
+            margin-bottom: 10px;
+        }
+        & li{
+            list-style-type: unset;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+        }   
+   }
+    }
+    & .target_container{
+        width: 100%;
+        padding: 0 10px;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        & .target_card{
+            width: 100%;
+            background-color: white;
+            border-radius: 10px;
+            border-top: 3px solid orange;
+            box-shadow: 0px 30px 40px -20px rgba(193, 190, 190, 0.4);
+            padding: 20px 10px;
+    }
+    }
+    
+
 }

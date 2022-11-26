@@ -1,7 +1,14 @@
-{
-  "home": "home",
-  "about": "about",
-  "experience": "experience",
-  "portfolio": "portfolio",
-  "note": "note"
+{ 
+  "nav":{
+    "home": "home",
+    "about": "about",
+    "experience": "experience",
+    "portfolio": "portfolio",
+    "note": "note"
+  },
+  "homepage":{
+    "intoduce_name":"HI,my name is",
+    "intoduce_title":"I'm a",
+    "more_about_me":"More About Me"
+  }
 }
