@@ -1,5 +1,86 @@
-.right_section{
-    position: relative;
-    width: 70%;
-    height: 100vh;
+@import "../styles/pattern.scss";
+@import url('https://fonts.googleapis.com/css2?family=Carter+One&display=swap');
+
+.experiencePage{
+    background-color: rgba(235, 235, 235,0.5);
+    width: 100%;
+    min-height: 100%;
+    padding: 50px 10px 10px;
+    overflow: auto;
+    font-family: 'Carter One', cursive;
+    & .experience_container{
+        margin-left: 50px;
+        border-left: 2px solid #e55f60;
+        padding: 0px 0px 30px 50px;
+        position: relative;
+        &::before{
+            content: '';
+            background-color: #e55f60;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: -7px;
+            transform: translate(0,-50%);
+        }
+        &:nth-last-child(1){
+            border: 0;
+            &::before{
+                left: -5px;
+            }
+        }
+        & .card{
+            animation: fadeIn 1s ease-in-out;
+            & h2{
+                font-weight: 400;
+            }
+            & h3{
+                font-weight: 400;
+
+            }
+            & h4{
+                font-weight: 400;
+
+            }
+            & p{
+                max-width: 600px;
+            }
+            & .blocks{
+                max-width: 600px;
+                display: flex;
+                flex-wrap: wrap;
+                margin: 5px 0;
+                & .block{
+                    margin: 0 5px;
+                    background: #f46b45; /* fallback for old browsers */
+                    background: $chrome-linear-color; /* Chrome 10-25, Safari 5.1-6 */
+                    background: $linear-color;
+                    color: white;
+                    height: 20px;
+                    padding: 11px 15px;
+                    width: auto;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 12px;
+                    &:nth-child(1){
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+       
+    }
+}
+@keyframes fadeIn {
+    from{
+        transform: translateX(-20px) ;
+        opacity: 0;
+    }
+    to{
+        transform: translateX(0px) ;
+        opacity: 1;
+    }
 }

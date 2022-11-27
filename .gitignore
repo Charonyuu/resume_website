@@ -27,4 +27,3 @@ dist-ssr
 .netlify
 functions
 .env
-constant
