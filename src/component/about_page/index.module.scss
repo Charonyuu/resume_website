@@ -8,7 +8,7 @@
     & h1{
         font-family: 'Carter One', cursive;
         font-size: 30px;
-        background: #f46b45; /* fallback for old browsers */
+        background: $orange_color; /* fallback for old browsers */
         background: $chrome-linear-color; /* Chrome 10-25, Safari 5.1-6 */
         background: $linear-color;
         -webkit-background-clip: text;

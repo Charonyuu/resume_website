@@ -45,16 +45,16 @@
             justify-content: center;
             cursor: pointer;
             &.active{
-                color: #f46b45;
-                background: #f46b45; /* fallback for old browsers */
+                color: $orange_color;
+                background: $orange_color; /* fallback for old browsers */
                 background: $chrome-linear-color; /* Chrome 10-25, Safari 5.1-6 */
                 background: $linear-color;
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
             }
             &:hover{
-                color: #f46b45;
-                background: #f46b45; /* fallback for old browsers */
+                color: $orange_color;
+                background: $orange_color; /* fallback for old browsers */
                 background: $chrome-linear-color; /* Chrome 10-25, Safari 5.1-6 */
                 background: $linear-color;
                 -webkit-background-clip: text;

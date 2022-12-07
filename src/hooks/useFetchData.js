@@ -1,31 +1,30 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { TEST_API_URL } from '../constant';
-export default function useFetchData(get_collection_type,get_doc_type){
+import {useMemo} from 'react'
+import useSWR from "swr";
+import { USER_DOC_API_URL,USER_COLLECTION_API_URL } from '../constant';
+export function useFetchDocData(get_doc_type){
+    
+   const fetcher = (url, params) => fetch(url + '?doc_type=' + params.doc_type).then(r => r.json());
+    const doc_type = get_doc_type;
+    const params = useMemo(() => ({ doc_type }), [doc_type]);
+    const { data,error } = useSWR(
+        [USER_DOC_API_URL, params],
+        fetcher
+    );
 
-    const [data,setData] = useState();
-    const [loading,setLoading] = useState(true);
-    const [error,setError] =useState('')
+    return {data  , error }
+}
 
-    const FetchData = (async()=>{
-        await axios.get(TEST_API_URL,{
-            //URL参數放在params屬性裏面
-            params: {
-                collection_type: get_collection_type,
-                doc_type: get_doc_type,
-            }
-        })
-        .then((response)=>{
-            setLoading(false)
-            setData(response.data.data);
-        }).catch((err)=>{
-            console.log('error:' + err);
-            setError(err.toString())
-        })
-    })
-    useEffect(()=>{
-        setLoading(true)
-        FetchData();
-    },[])
-    return {data , loading , error }
+export function useFetchCollectionData(get_doc_type,get_collection_type){
+
+   const fetcher = (url, params) => fetch(url + '?doc_type=' + params.doc_type + '&collection_type=' + params.collection_type).then(r => r.json());
+    const doc_type = get_doc_type;
+    const collection_type = get_collection_type;
+
+    const params = useMemo(() => ({ doc_type,collection_type }), [doc_type]);
+    const { data,error } = useSWR(
+        [USER_COLLECTION_API_URL, params],
+        fetcher
+    );
+
+    return {data  , error }
 }
