@@ -7,10 +7,10 @@ export default function ExperiencePage() {
   const { data } = useFetchCollectionData('experience','experience_list')
   const { t,i18n } = useTranslation();
   if (!data) return <div>loading...</div>;
-
+  
   return (
     <div className={styles.experiencePage}>
-      {data.data.reverse().map((company,idx)=>
+      {data.data.sort((a, b) => b.startDate.replace('/','') - a.startDate.replace('/','')).map((company,idx)=>
       <div className={styles.experience_container}  key={idx}>
         <div className={styles.card}>
         <h2>{i18n.language === 'en' ? company.en_title : company.zh_title}({company.startDate + '~' + company.endDate})</h2>
@@ -23,9 +23,9 @@ export default function ExperiencePage() {
         <p>{i18n.language === 'en' ? company.en_introduction : company.zh_introduction}</p>
         {company.exhibit.length> 0 && company.exhibit.map((exhibit_item,idx)=>
           <div className={styles.exhibit} key={idx}>
-            <h4>負責產品:</h4>
+            <h4>{t("experience.responsible")}:</h4>
             {idx+1}. <a href={exhibit_item.url} target={'_blank'}>{exhibit_item.name}</a>
-            <p>{exhibit_item.content}</p>  
+            <p>{i18n.language === 'en' ? exhibit_item.en_content : exhibit_item.zh_content}</p>  
           </div>
         )}
         </div>

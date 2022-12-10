@@ -5,7 +5,7 @@ import self_picture from '../../assets/self_picture.png'
 import {useFetchDocData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
 import { AiOutlineMail,AiFillGithub,AiOutlinePhone,AiOutlineLinkedin } from "react-icons/ai";
-
+import Slider from 'react-slick';
 export default function HomePage() {
   const { data } = useFetchDocData('profile')
   const { t,i18n } = useTranslation();
@@ -17,15 +17,24 @@ export default function HomePage() {
     : 
     {name:data.data.zh_name,title:data.data.zh_title,introduction:data.data.zh_introduction} 
   );
+  const settings = {
+      infinite: true,
+      arrows:false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2500,
+      fade: true,
+    };
   const {email , github , phone , linkedin} = data.data.contact
   return (
     <section className={styles.HomePage}>
       <div className={styles.introduce}>
         <div className={styles.name}>
-          {t("homepage.intoduce_name")}{profile.name}
+          {t("homepage.intoduce_name")} {profile.name}
         </div>
         <div className={styles.title}>
-          {t("homepage.intoduce_title")}{profile.title}
+          {t("homepage.intoduce_title")} {profile.title}
         </div>
         <div className={styles.introduction}>
           {profile.introduction}
@@ -41,9 +50,14 @@ export default function HomePage() {
         </Link>
       </div>
       <div className={styles.picture_container}>
-          <div className={styles.picture}>
-            <img src={self_picture} alt="" />
-          </div>
+        <Slider {...settings} className={styles.slider}>
+          {data.data.picture_url.map((picture)=>
+            <div className={styles.picture}>
+              <img src={picture.url} key={picture.name} alt="" />
+            </div>
+
+          )}
+        </Slider>
       </div>
     </section>
   )

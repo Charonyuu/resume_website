@@ -11,9 +11,12 @@
     "intoduce_title":"我是一個",
     "more_about_me":"更多關於我"
   },
-  "about":{
-    "skill": "技能",
-    "target": ""
+  "experience":{
+    "responsible": "負責項目"
+  },
+  "portfilio":{
+    "more_info": "查看更多...",
+    "tools":"使用工具："
   }
   
 }

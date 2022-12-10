@@ -15,16 +15,19 @@
         justify-content: center;
         & .name{
             font-size: 24px;
+            font-weight: 600;
             margin-bottom: 5px;
             animation: fadeIn 1s ease-in-out;
         }
         & .title{
             font-size: 20px;
+            font-weight: 500;
             margin-bottom: 5px;
             animation: fadeIn 1s ease-in-out;
         }
         & .introduction{
-            font-size: 18px;
+            text-align: justify;
+            font-size: 15px;
             margin-bottom: 5px;
             animation: fadeIn 1s ease-in-out;
         }
@@ -86,16 +89,19 @@
         justify-content: center;
         align-items: center;
         margin-bottom: 50px;
-        & .picture{
+        & .slider{
             height: 400px;
-            width: 300px;
-            animation: pictureFadeIn 1s ease-in-out;
-            & img{
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 10px;
-
+                width: 300px;
+            & .picture{
+                height: 400px;
+                width: 300px;
+                animation: pictureFadeIn 1s ease-in-out;
+                & img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 10px;
+                }
             }
         }
         

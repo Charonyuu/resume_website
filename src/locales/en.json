@@ -10,5 +10,12 @@
     "intoduce_name":"HI,my name is",
     "intoduce_title":"I'm a",
     "more_about_me":"More About Me"
+  },
+  "experience":{
+    "responsible": "Responsible for"
+  },
+  "portfilio":{
+    "more_info": "See More...",
+    "tools":"tools:"
   }
 }
