@@ -1,7 +1,6 @@
 import React, { useEffect, useState,useMemo } from 'react'
 import styles from './index.module.scss'
 import { Link } from "react-router-dom";
-import self_picture from '../../assets/self_picture.png'
 import {useFetchDocData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
 import { AiOutlineMail,AiFillGithub,AiOutlinePhone,AiOutlineLinkedin } from "react-icons/ai";
@@ -52,8 +51,8 @@ export default function HomePage() {
       <div className={styles.picture_container}>
         <Slider {...settings} className={styles.slider}>
           {data.data.picture_url.map((picture)=>
-            <div className={styles.picture}>
-              <img src={picture.url} key={picture.name} alt="" />
+            <div className={styles.picture} key={picture.name} >
+              <img src={picture.url}  alt="" />
             </div>
 
           )}

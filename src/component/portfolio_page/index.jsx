@@ -76,7 +76,7 @@ const Modal = ({language,data,closeModal}) =>{
           <h4>{t("portfilio.tools")}</h4>
         <div className={styles.tools}>
           {tools.map((tool,idx)=>
-            <div className={styles.tool}>{tool}</div>
+            <div className={styles.tool} key={idx}>{tool}</div>
             )
           }
         </div>
