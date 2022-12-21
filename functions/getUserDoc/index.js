@@ -4,12 +4,13 @@
 const admin = require('firebase-admin')
 require('dotenv').config();
 
+const { Buffer } = require('buffer');
 admin.initializeApp({
   credential: admin.credential.cert({
   "type": process.env.VITE_FIREBASE_TYPE,
   "project_id": process.env.VITE_FIREBASE_PROJECT_ID,
   "private_key_id": process.env.VITE_FIREBASE_PRIVATE_KEY_ID,
-  "private_key": process.env.VITE_FIREBASE_PRIVATE_KEY,
+  "private_key": Buffer.from(process.env.VITE_FIREBASE_PRIVATE_KEY_BASE64, 'base64').toString(),
   "client_email": process.env.VITE_FIREBASE_CLIENT_EMAIL,
   "client_id": process.env.VITE_FIREBASE_CLIENT_IDd,
   "auth_uri": process.env.VITE_FIREBASE_AUTH_URL,
