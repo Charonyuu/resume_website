@@ -11,7 +11,7 @@ admin.initializeApp({
   "private_key_id": process.env.VITE_FIREBASE_PRIVATE_KEY_ID,
   "private_key": Buffer.from(process.env.VITE_FIREBASE_PRIVATE_KEY_BASE64, 'base64').toString(),
   "client_email": process.env.VITE_FIREBASE_CLIENT_EMAIL,
-  "client_id": process.env.VITE_FIREBASE_CLIENT_IDd,
+  "client_id": process.env.VITE_FIREBASE_CLIENT_ID,
   "auth_uri": process.env.VITE_FIREBASE_AUTH_URL,
   "token_uri": process.env.VITE_FIREBASE_TOKEN_URL,
   "auth_provider_x509_cert_url": process.env.VITE_FIREBASE_AUTH_PROVIDE_X509_CERT_URL,
