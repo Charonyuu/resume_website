@@ -4,17 +4,17 @@ import {useFetchCollectionData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
 import Slider from "react-slick";
 import { AiOutlineCloseCircle,AiOutlineArrowLeft,AiOutlineArrowRight } from "react-icons/ai";
+import Loading from '../Loading';
 
 export default function PortfilioPage() {
   const { data } = useFetchCollectionData('portfilio','portfilio_list')
   const { t,i18n } = useTranslation();
   const [openModal,setOpenModal] = useState({open:false,data:null});
   
-  if (!data) return <div>loading...</div>;
+  if (!data) return <Loading />;
   const handle_open_modal = (data) =>{
     setOpenModal({open:true,data})
   }
-  console.log(data);
   return (
     <div className={styles.portfilioPage}>
       {data.map((portfilio_item,idx)=>

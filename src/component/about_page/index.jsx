@@ -3,12 +3,13 @@ import styles from './index.module.scss'
 import {BsFillPinAngleFill} from "react-icons/bs";
 import {useFetchDocData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
+import Loading from '../Loading';
 
 export default function AboutPage() {
   const { data } = useFetchDocData('about')
-  const { t,i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
-  if (!data) return <div>loading...</div>;
+  if (!data) return <Loading />;
   const profile = 
   (i18n.language === 'en' ? 
     {skill:data.en_skill,target:data.en_target} 

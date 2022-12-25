@@ -1,8 +1,9 @@
-import React,{useState,useEffect} from 'react'
+import React from 'react'
 import styles from './index.module.scss'
 import {useFetchSingleNote} from '../../hooks/useFetchData';
 import {Link,useLocation, useParams} from "react-router-dom";
 import './quill.snow.scss';
+import Loading from '../Loading';
 
 export default function SingleNotePage() {
   let note;
@@ -17,7 +18,7 @@ export default function SingleNotePage() {
     note = state_data 
   }
  
-  if (!note) return <div>loading...</div>;
+  if (!note) return <Loading />;
 
   return (
     <div className={styles.container}>

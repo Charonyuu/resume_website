@@ -2,7 +2,7 @@ import React, { useState,useRef,useCallback } from 'react'
 import styles from './index.module.scss'
 import {useFetchNotesData} from '../../hooks/useFetchData';
 import {Link} from "react-router-dom";
-import Loading from './note_loading';
+import NoteLoading from './note_loading';
 
 export default function NotePage() {
   
@@ -11,7 +11,6 @@ export default function NotePage() {
 
   const observer = useRef();
   const lastNoteRef = useCallback(node => {
-    console.log(node);
     if (loading) {
       return;
     }
@@ -28,7 +27,7 @@ export default function NotePage() {
 
   return (
     <div className={styles.note_page}>
-      {!notes.length ? <Loading /> : (
+      {!notes.length ? <NoteLoading /> : (
         <>
         {notes.map((note,idx)=>
           {
@@ -46,7 +45,7 @@ export default function NotePage() {
                     <p className={styles.time}>{note.Date}</p>
                     <Link to={{pathname: `note/${note.id}`,state:note}} className={styles.read_more}>閱讀更多</Link>
                   </div>
-                  {loading && <Loading />}
+                  {loading && <NoteLoading />}
                   {!hasMore && <p className={styles.no_more}>沒有更多了....</p>}
                 </>
               )

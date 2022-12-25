@@ -1,21 +1,24 @@
-import React, { useEffect, useState,useMemo } from 'react'
+import React from 'react'
 import styles from './index.module.scss'
 import { Link } from "react-router-dom";
 import {useFetchDocData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
 import { AiOutlineMail,AiFillGithub,AiOutlinePhone,AiOutlineLinkedin } from "react-icons/ai";
 import Slider from 'react-slick';
+import Loading from '../Loading';
 export default function HomePage() {
   const { data } = useFetchDocData('profile')
   const { t,i18n } = useTranslation();
   
-  if (!data) return <div>loading...</div>;
-  const profile = 
+  if (!data) return <Loading />;
+  const {name,title,introduction} = 
   (i18n.language === 'en' ? 
     {name:data.en_name,title:data.en_title,introduction:data.en_introduction} 
     : 
     {name:data.zh_name,title:data.zh_title,introduction:data.zh_introduction} 
   );
+  const {email , github , phone , linkedin} = data.contact
+
   const settings = {
       infinite: true,
       arrows:false,
@@ -25,18 +28,17 @@ export default function HomePage() {
       autoplaySpeed: 2500,
       fade: true,
     };
-  const {email , github , phone , linkedin} = data.contact
   return (
     <section className={styles.HomePage}>
       <div className={styles.introduce}>
         <div className={styles.name}>
-          {t("homepage.intoduce_name")} {profile.name}
+          {t("homepage.intoduce_name")} {name}
         </div>
         <div className={styles.title}>
-          {t("homepage.intoduce_title")} {profile.title}
+          {t("homepage.intoduce_title")} {title}
         </div>
         <div className={styles.introduction}>
-          {profile.introduction}
+          {introduction}
         </div>
         <div className={styles.iconlist}>
           {phone && <a href={`tel:+${phone}`} ><AiOutlinePhone /><span>{phone}</span></a>}

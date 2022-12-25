@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './note_loading.module.scss'
 
-export default function Loading() {
+export default function NoteLoading() {
   return (
     <div className={styles.loading_container}>
       <div className={styles.title_placeholder} />

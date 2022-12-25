@@ -2,11 +2,12 @@ import React from 'react'
 import styles from './index.module.scss'
 import {useFetchCollectionData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
+import Loading from '../Loading';
 
 export default function ExperiencePage() {
   const { data } = useFetchCollectionData('experience','experience_list')
   const { t,i18n } = useTranslation();
-  if (!data) return <div>loading...</div>;
+  if (!data) return <Loading />;
   
   return (
     <div className={styles.experiencePage}>
