@@ -1,12 +1,22 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import styles from './index.module.scss'
 import {useFetchSingleNote} from '../../hooks/useFetchData';
-import {Link, useParams} from "react-router-dom";
+import {Link,useLocation, useParams} from "react-router-dom";
 import './quill.snow.scss';
 
 export default function SingleNotePage() {
-  let { id } = useParams();
-  const { data:note } = useFetchSingleNote(id)
+  let note;
+  const location = useLocation();
+
+  const state_data = location.state || ''
+  if (!state_data){
+    const { id } = useParams();
+    const { data } =  useFetchSingleNote(id)
+    note = data
+  }else{
+    note = state_data 
+  }
+ 
   if (!note) return <div>loading...</div>;
 
   return (

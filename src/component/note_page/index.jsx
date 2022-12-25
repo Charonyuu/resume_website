@@ -36,7 +36,7 @@ export default function NotePage() {
               return(
                 <>
                   <div className={styles.card} key={note.id} data-id={note.id} ref={lastNoteRef}>
-                    <Link to={`note/${note.id}`} ><h1>{note.title}</h1></Link>
+                    <Link to={{pathname: `note/${note.id}`,state:note}} ><h1>{note.title}</h1></Link>
                     <p className={styles.content}>{note.intro}</p>
                     <div className={styles.keyword_container}>
                       {note.keyword.map((item,idx)=>
@@ -44,7 +44,7 @@ export default function NotePage() {
                       )}
                     </div>
                     <p className={styles.time}>{note.Date}</p>
-                    <Link to={`note/${note.id}`} className={styles.read_more}>閱讀更多</Link>
+                    <Link to={{pathname: `note/${note.id}`,state:note}} className={styles.read_more}>閱讀更多</Link>
                   </div>
                   {loading && <Loading />}
                   {!hasMore && <p className={styles.no_more}>沒有更多了....</p>}
@@ -53,7 +53,7 @@ export default function NotePage() {
             }else{
               return(
                 <div className={styles.card} key={note.id}>
-                  <Link to={`note/${note.id}`} ><h1>{note.title}</h1></Link>
+                  <Link to={{pathname: `note/${note.id}`,state:note}} ><h1>{note.title}</h1></Link>
                   <p className={styles.content}>{note.intro}</p>
                   <div className={styles.keyword_container}>
                     {note.keyword.map((item,idx)=>
@@ -61,7 +61,7 @@ export default function NotePage() {
                     )}
                   </div>
                   <p className={styles.time}>{note.Date}</p>
-                  <Link to={`note/${note.id}`} className={styles.read_more}>閱讀更多</Link>
+                  <Link to={{pathname: `note/${note.id}`,state:note}} className={styles.read_more}>閱讀更多</Link>
                 </div>
               )
             }
