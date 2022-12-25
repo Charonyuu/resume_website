@@ -1,0 +1,61 @@
+@import "../styles/pattern.scss";
+
+.note_page{
+    background-color: rgba(235, 235, 235,0.5);
+    width: 100%;
+    min-height: 100%;
+    padding: 30px 50px 10px 30px;
+    overflow: auto;
+    font-family: 'Carter One', cursive;
+    & .card{
+        width: 100%;
+        position: relative;
+        margin-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid lightgray;
+        & h1{
+            cursor: pointer;
+            font-weight: 500;
+        }
+        & .content{
+            color: #212121c3;
+            margin-top: 5px;
+            width: 100%;
+            padding-right: 30px;
+            text-align: justify;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+        & .keyword_container{
+            width: 100%;
+            margin: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            & .keyword{
+                color: $orange_color;
+                width: fit-content;
+                border-radius: 5px;
+                border: 1px solid $orange_color;
+                padding: 2px 5px;
+                margin-right: 10px;
+            }
+        }
+        
+        & .time{
+            position: absolute;
+            bottom: 30px;
+            right: 0px;
+        }
+        & .read_more{
+            font-size: 15px;
+            width: 60px;
+            color: rgb(191, 190, 190);
+            cursor: pointer;
+            &:hover{
+                color: rgb(119, 119, 239);
+            }
+        }
+    }
+}

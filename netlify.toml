@@ -9,3 +9,13 @@
   from = "/api/userCollection"
   to = "/.netlify/functions/getUserCollection"
   status = 200
+
+[[redirects]]
+  from = "/api/getNotes"
+  to = "/.netlify/functions/getNotes"
+  status = 200
+
+[[redirects]]
+  from = "/api/getSingleNote"
+  to = "/.netlify/functions/getSingleNote"
+  status = 200

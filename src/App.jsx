@@ -5,38 +5,35 @@ import HomePage from './component/home_page';
 import AboutPage from './component/about_page';
 import ExperiencePage from './component/experience_page';
 import PortfolioPage from './component/portfolio_page';
+import SingleNotePage from './component/single_note_page';
 import './App.css'
 import { Switch, Route } from "react-router-dom";
 function App() {
 
   return (
-    <section className="all">
-      <div className="left_section">
-        <Nav />
-      </div>
-      <div className="right_section">
         <Switch>
           <Route exact path="/">
-            <HomePage />
+            <Nav><HomePage /></Nav>
           </Route>
           <Route path="/about">
-            <AboutPage/>
+            <Nav><AboutPage/></Nav>
           </Route>
           <Route path="/experience">
-            <ExperiencePage/>
+            <Nav><ExperiencePage/></Nav>
           </Route>
           <Route path="/portfolio">
-            <PortfolioPage/>
+            <Nav><PortfolioPage/></Nav>
+          </Route>
+          <Route path="/note/:id">
+            <SingleNotePage />
           </Route>
           <Route path="/note">
-            <NotePage />
+            <Nav><NotePage /></Nav>
           </Route>
           <Route path="/*">
-            <HomePage/>
+            <Nav><HomePage/></Nav>
           </Route>
         </Switch>
-      </div>
-    </section>
   )
 }
 

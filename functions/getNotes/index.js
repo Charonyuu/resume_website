@@ -25,16 +25,26 @@ const db = admin.firestore()
 
 
 exports.handler = async (event, context) => {
-
-  const snapshot = await db.collection("user").doc('note').collection('note_list').get();
+  const lastId = event.queryStringParameters.lastId || '';
+  let snapshot;
+  if(lastId){
+    const startAtSnapshot = db.collection("user").doc('note').collection('note_list')
+      .orderBy('id')
+      .startAt(lastId);
+    snapshot = await startAtSnapshot.limit(6).get();
+  }else{
+    const startAtSnapshot = db.collection("user").doc('note').collection('note_list')
+      .orderBy('id')
+    snapshot = await startAtSnapshot.limit(6).get();
+  }
   let data = []
   snapshot.forEach((doc) => {
     data.push( doc.data())
   });
   return {
     statusCode: 200,
-    body: JSON.stringify({
+    body: JSON.stringify(
       data
-    })
+    )
   }
 }
