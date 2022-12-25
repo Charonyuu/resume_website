@@ -11,9 +11,9 @@ export default function AboutPage() {
   if (!data) return <div>loading...</div>;
   const profile = 
   (i18n.language === 'en' ? 
-    {skill:data.data.en_skill,target:data.data.en_target} 
+    {skill:data.en_skill,target:data.en_target} 
     : 
-    {skill:data.data.zh_skill,target:data.data.zh_target} 
+    {skill:data.zh_skill,target:data.zh_target} 
   )
   return (
     <div className={styles.aboutPage}>

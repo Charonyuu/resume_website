@@ -1,5 +1,7 @@
 import {useEffect, useMemo, useState} from 'react'
 import useSWR from "swr";
+import axios from 'axios';
+
 import { 
     USER_DOC_API_URL,
     USER_COLLECTION_API_URL,
@@ -40,43 +42,45 @@ export function useFetchCollectionData(get_doc_type,get_collection_type){
     return {data  , error }
 }
 
-export function useFetchNotesData(get_lastId){
-    // const [notes,setNotes] = useState([]);
-    // const [hasMore,setHasMore] = useState(true);
-    // const [loading,setLoading] = useState(true);
+export function useFetchNotesData(lastId){
     const api_url = location.host.includes('localhost') ? LOCAL_NOTES_API_URL : NOTES_API_URL
 
-   const fetcher = (url, params) => fetch(url + '?lastId=' + params.lastId).then(r => r.json());
-    const lastId = get_lastId || '';
+    const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
+	const [notes, setNotes] = useState([]);
+	const [hasMore, setHasMore] = useState(true);
 
-    const params = useMemo(() => ({ lastId }), [lastId]);
-    const { data,error } = useSWR(
-        [api_url, params],
-        fetcher
-    );
+	useEffect(() => {
+		setLoading(true);
+		setError(false);
 
-    // useEffect(()=>{
+		if (lastId) {
+			setTimeout(() => {
+				axios.get(api_url + '?lastId=' + lastId)
+					.then((result) => {
+						setNotes(prevNotes => [...prevNotes, ...result.data]);
+						setHasMore(result.data.length > 0);
+						setLoading(false);
+					})
+					.catch(() => {
+						setError(true);
+					})
+			}, 700)
+		} else {
+			// 第一次進入頁面
+			axios.get(api_url)
+				.then((result) => {
+					setNotes(result.data);
+					setHasMore(result.data.length > 0);
+					setLoading(false);
+				})
+				.catch(() => {
+					setError(true);
+				})
+		}
+	}, [lastId])
 
-        
-    //     const fetchData = () =>{
-            
-    //         setLoading(true)
-    //         if(get_id){
-    //             setNotes(prevNotes => {
-    //                 return [...prevNotes, data]
-    //             })
-    //             setHasMore(data.length > 0);
-    //             setLoading(false)
-    //         }else{
-    //             setNotes(data)
-    //             setHasMore(data.length > 0);
-    //             setLoading(false)
-    //         }
-    //     }
-    //     fetchData();
-        
-    // },[get_id])
-    return {data  , error }
+	return { loading, error, notes, hasMore };
 }
 
 export function useFetchSingleNote(get_id){

@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
   if(lastId){
     const startAtSnapshot = db.collection("user").doc('note').collection('note_list')
       .orderBy('id')
-      .startAt(lastId);
+      .startAfter(lastId);
     snapshot = await startAtSnapshot.limit(6).get();
   }else{
     const startAtSnapshot = db.collection("user").doc('note').collection('note_list')

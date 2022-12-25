@@ -17,7 +17,7 @@ export default function PortfilioPage() {
   console.log(data);
   return (
     <div className={styles.portfilioPage}>
-      {data.data.map((portfilio_item,idx)=>
+      {data.map((portfilio_item,idx)=>
         <div className={styles.card}  key={idx}>
           <div className={styles.picture}>
             <img src={portfilio_item.picture_list[0].url} alt={portfilio_item.picture_list[0].name}/>

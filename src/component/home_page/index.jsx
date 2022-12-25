@@ -12,9 +12,9 @@ export default function HomePage() {
   if (!data) return <div>loading...</div>;
   const profile = 
   (i18n.language === 'en' ? 
-    {name:data.data.en_name,title:data.data.en_title,introduction:data.data.en_introduction} 
+    {name:data.en_name,title:data.en_title,introduction:data.en_introduction} 
     : 
-    {name:data.data.zh_name,title:data.data.zh_title,introduction:data.data.zh_introduction} 
+    {name:data.zh_name,title:data.zh_title,introduction:data.zh_introduction} 
   );
   const settings = {
       infinite: true,
@@ -25,7 +25,7 @@ export default function HomePage() {
       autoplaySpeed: 2500,
       fade: true,
     };
-  const {email , github , phone , linkedin} = data.data.contact
+  const {email , github , phone , linkedin} = data.contact
   return (
     <section className={styles.HomePage}>
       <div className={styles.introduce}>
@@ -50,7 +50,7 @@ export default function HomePage() {
       </div>
       <div className={styles.picture_container}>
         <Slider {...settings} className={styles.slider}>
-          {data.data.picture_url.map((picture)=>
+          {data.picture_url.map((picture)=>
             <div className={styles.picture} key={picture.name} >
               <img src={picture.url}  alt="" />
             </div>

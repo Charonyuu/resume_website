@@ -6,10 +6,8 @@ import './quill.snow.scss';
 
 export default function SingleNotePage() {
   let { id } = useParams();
-  const { data } = useFetchSingleNote(id)
-  if (!data) return <div>loading...</div>;
-  console.log(123213);
-  const {data:note} = data
+  const { data:note } = useFetchSingleNote(id)
+  if (!note) return <div>loading...</div>;
 
   return (
     <div className={styles.container}>
