@@ -4,7 +4,8 @@
     "about": "關於",
     "experience": "經歷",
     "portfolio": "作品",
-    "note": "筆記"
+    "note": "筆記",
+    "changeLanguage":"更換語言"
   },
   "homepage":{
     "intoduce_name":"您好～我是",

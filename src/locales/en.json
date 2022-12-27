@@ -4,7 +4,8 @@
     "about": "about",
     "experience": "experience",
     "portfolio": "portfolio",
-    "note": "note"
+    "note": "note",
+    "changeLanguage":"changeLanguage"
   },
   "homepage":{
     "intoduce_name":"HI,my name is",

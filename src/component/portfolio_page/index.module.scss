@@ -3,7 +3,7 @@
 .portfilioPage{
     background-color: rgba(235, 235, 235,0.5);
     width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     padding: 50px 30px 10px;
     overflow: auto;
     font-family: 'Carter One', cursive;
@@ -11,10 +11,13 @@
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
+    @media (max-width: 960px) {
+        padding: 20px 10px 10px;
 
+    }
     & .card{
         width: 100%;
-        height: 300px;
+        height: 200px;
         border-radius: 10px;
         background-color: white;
         display: flex;
@@ -22,10 +25,20 @@
         align-items: flex-end;
         padding: 20px 30px;
         position: relative;
+        flex-wrap: wrap;
+        @media (max-width: 960px) {
+            height: 300px;
+            width: 100%;
+            align-items: flex-start;
+        }
         & .picture{
             width: 200px;
-            height: 260px;
+            height: 150px;
             flex-shrink: 0;
+            @media (max-width: 960px) {
+                width: 100%;
+                height: 130px;
+            }
             & > img{
                 height: 100%;
                 width: 100%;
@@ -34,6 +47,7 @@
         }
         & .content{
             margin-bottom: 10px;
+            flex: 1;
             & h2{
                 font-size: 24px;
                 margin: 5px 5px;
@@ -44,6 +58,14 @@
                 font-size: 14px;
                 margin: 5px 10px;
                 width: 80%;
+                @media (max-width: 960px) {
+                    width: 100%;
+                    margin: unset;
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 3;
+                    overflow: hidden;
+                }
             }
         }
         
@@ -77,6 +99,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     & .modal{
         width: 900px;
         height: auto;
@@ -84,8 +107,24 @@
         border-radius: 20px;
         padding: 50px 40px 40px;
         position: relative;
+        overflow: auto;
+        @media (max-width: 960px) {
+            margin-top: 10px;
+            position: fixed;
+            padding-top: 45px;
+            width: 100%;
+            height: 100%;
+            border-radius: 0px;
+
+        }
         & h2,h5,p{
-            margin-bottom: 10px;
+            margin: 5px 0;
+        }
+        & a{
+            text-decoration: underline;
+        }
+        & h4{
+            margin-top: 10px;
         }
         & .closeBtn{
             position: absolute;
@@ -94,9 +133,14 @@
             color: black;
             font-size: 25px;
             cursor: pointer;
+            @media (max-width: 960px) {
+                top: 55px;
+                z-index: 999;
+            }
         }
         & svg{
             color: black;
+
         }
         & .slider_container{
             display: flex;
@@ -141,6 +185,9 @@
                 align-items: center;
                 font-size: 12px;
                 margin-right: 10px;
+                @media (max-width: 960px) {
+                    margin-bottom: 5px;
+                }
             }
         }
     }

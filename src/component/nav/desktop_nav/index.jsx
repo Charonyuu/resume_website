@@ -21,7 +21,8 @@ export default function Desktop_Nav() {
   return (
     <section className={styles.nav_section}>
         <div className={styles.btn} onClick={changeLanguage}><IoLanguage /></div>
-        <div className={styles.logo}><img src={Logo} alt=''/></div>
+        <Link to="/" ><div className={styles.logo}><img src={Logo} alt=''/></div></Link>
+
       <ul>
         <Link to="/">
             <li className={location.pathname === '/' ? styles.active : null}>

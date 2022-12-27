@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Nav from './component/nav'
 import NotePage from './component/note_page';
 import HomePage from './component/home_page';
@@ -6,7 +5,6 @@ import AboutPage from './component/about_page';
 import ExperiencePage from './component/experience_page';
 import PortfolioPage from './component/portfolio_page';
 import SingleNotePage from './component/single_note_page';
-import './App.css'
 import { Switch, Route } from "react-router-dom";
 function App() {
 

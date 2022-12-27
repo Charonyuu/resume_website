@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import styles from './index.module.scss'
 import {useFetchCollectionData} from '../../hooks/useFetchData';
 import { useTranslation } from "react-i18next";
@@ -10,11 +10,20 @@ export default function PortfilioPage() {
   const { data } = useFetchCollectionData('portfilio','portfilio_list')
   const { t,i18n } = useTranslation();
   const [openModal,setOpenModal] = useState({open:false,data:null});
-  
+
+  useEffect(()=>{
+    if(openModal.open){
+      document.body.style.overflow = 'hidden';
+    }else{
+      document.body.style.overflow = 'unset';
+    }
+  },[openModal.open])
+
   if (!data) return <Loading />;
   const handle_open_modal = (data) =>{
     setOpenModal({open:true,data})
   }
+  
   return (
     <div className={styles.portfilioPage}>
       {data.map((portfilio_item,idx)=>
@@ -38,7 +47,7 @@ export default function PortfilioPage() {
 const Modal = ({language,data,closeModal}) =>{
   const name = language === 'en' ? data.en_portfilio_name : data.zh_portfilio_name
   const introduction = language === 'en' ? data.en_introduction : data.zh_introduction
-  const {picture_list , tools } = data
+  const {picture_list , tools, portifilio_url } = data
   const { t } = useTranslation();
   const settings = {
       dots: true,
@@ -51,7 +60,17 @@ const Modal = ({language,data,closeModal}) =>{
       fade: true,
       pauseOnHover: true,
       nextArrow: <AiOutlineArrowRight />,
-      prevArrow: <AiOutlineArrowLeft />
+      prevArrow: <AiOutlineArrowLeft />,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            nextArrow: null,
+            prevArrow: null,
+            arrows:false
+          }
+        },
+      ]
     };
   
   return(
@@ -73,7 +92,8 @@ const Modal = ({language,data,closeModal}) =>{
         
         <h2>{name}</h2>
         <p>{introduction}</p>
-          <h4>{t("portfilio.tools")}</h4>
+        <a href={portifilio_url} target={"_blank"}>{portifilio_url}</a>
+        <h4>{t("portfilio.tools")}</h4>
         <div className={styles.tools}>
           {tools.map((tool,idx)=>
             <div className={styles.tool} key={idx}>{tool}</div>
