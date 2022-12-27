@@ -2,7 +2,9 @@
     width: 100vw;
     position: relative;
     padding: 20px 20% 50px;
-    
+    @media (max-width: 960px) {
+        padding: 20px 10px 
+    }
     & .backBtn{
         position: absolute;
         left: 30px;
@@ -11,6 +13,10 @@
         border: 1px solid #21212193;
         padding: 3px 10px;
         cursor: pointer;
+        @media (max-width: 960px) {
+            left: 10px;
+            top: 10px;
+        }
     }
     & .title{
         width: 100%;

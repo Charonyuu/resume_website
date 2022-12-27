@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Link } from "react-router-dom";
 import styles from './index.module.scss'
 import { useTranslation } from "react-i18next";
-import { IoLanguage, IoOpen } from "react-icons/io5";
+import { IoLanguage } from "react-icons/io5";
 import { BsPersonFill,BsFillPersonBadgeFill,BsPencilFill,BsFillBookFill } from "react-icons/bs";
 import { AiFillHome,AiOutlineMenu,AiOutlineClose } from "react-icons/ai";
 import Logo from'../../../assets/logo.png';
@@ -15,8 +15,14 @@ export default function Mobile_Nav() {
     const location = useLocation();
     const closeMenu = () =>{
         setIsOpen(false)
-        document.body.style.overflow = 'unset'
     }
+    useEffect(()=>{
+        if(isOpen){
+            document.body.style.overflow = 'hidden';
+        }else{
+            document.body.style.overflow = 'unset'
+        }
+    },[isOpen])
     const changeLanguage = () =>{
         if (i18n.language === 'en') return i18n.changeLanguage('zh');
 
