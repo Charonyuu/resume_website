@@ -10,9 +10,6 @@ function App() {
 
   return (
         <Switch>
-          <Route exact path="/">
-            <Nav><HomePage /></Nav>
-          </Route>
           <Route path="/about">
             <Nav><AboutPage/></Nav>
           </Route>
@@ -28,8 +25,8 @@ function App() {
           <Route path="/note">
             <Nav><NotePage /></Nav>
           </Route>
-          <Route path="/*">
-            <Nav><HomePage/></Nav>
+          <Route exact path="/">
+            <Nav><HomePage /></Nav>
           </Route>
         </Switch>
   )
